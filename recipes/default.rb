@@ -23,6 +23,7 @@ template '/etc/elasticsearch/elasticsearch.yml' do
   variables(
     params: params || {}
   )
+  notifies :restart, 'service[elasticsearch]', :delayed
 end
 
 service 'elasticsearch' do
