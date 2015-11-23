@@ -1,5 +1,6 @@
 version = node['formatron_elasticsearch']['version']
 checksum = node['formatron_elasticsearch']['checksum']
+params = node['formatron_elasticsearch']['params']
 
 cache = Chef::Config[:file_cache_path]
 deb = File.join cache, 'elasticsearch.deb' 
@@ -15,6 +16,13 @@ dpkg_package 'elasticsearch' do
   source deb
   action :nothing
   notifies :restart, 'service[elasticsearch]', :delayed
+end
+
+template '/etc/elasticsearch/elasticsearch.yml' do
+  group  'elasticsearch'
+  variables(
+    params: params || {}
+  )
 end
 
 service 'elasticsearch' do
