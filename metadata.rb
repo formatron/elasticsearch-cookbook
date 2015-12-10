@@ -1,4 +1,7 @@
 name 'formatron_elasticsearch'
 version '0.1.0'
+description 'Formatron Elasticsearch cookbook'
+source_url 'https://github.com/formatron/elasticsearch-cookbook'
+issues_url 'https://github.com/formatron/elasticsearch-cookbook/issues'
 supports 'ubuntu'
 depends 'apt'
